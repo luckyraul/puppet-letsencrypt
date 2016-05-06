@@ -1,6 +1,5 @@
 # Define letsencrypt::config::domain
 define letsencrypt::config::domain (
-      $name = undef,
       $ensure = present,
       $domains = [],
       $webroot = '',
@@ -12,24 +11,22 @@ define letsencrypt::config::domain (
       $authenticator = 'webroot',
   ) {
 
-  if ($ensure == 'absent')
-  {
-    file { "/etc/letsencrypt/configs/${name}.ini":
-      ensure => $ensure,
-    }
-  }
 
-  $defaults = { 'path' => "/etc/letsencrypt/configs/${name}.ini" }
+    file { "/etc/letsencrypt/configs/${name}.ini":
+        ensure => $ensure,
+    }
+
+  $defaults = { 'path' => "/etc/letsencrypt/configs/${name}.ini", require => File["/etc/letsencrypt/configs/${name}.ini"] }
   $settings = { '' =>
     {
-      'server'        => $server
-      'rsa-key-size'  => $rsa_key_size
-      'domains'       => $domains
-      'authenticator' => $authenticator
-      'email'         => $email
-      'text'          => $text
-      'webroot'       => $webroot
-      'agree-tos'     => $agree_tos
+      'server'        => $server,
+      'rsa-key-size'  => $rsa_key_size,
+      'domains'       => $domains,
+      'authenticator' => $authenticator,
+      'email'         => $email,
+      'text'          => $text,
+      'webroot-path'  => $webroot,
+      'agree-tos'     => $agree_tos,
     }
   }
   create_ini_settings($settings, $defaults)
