@@ -37,8 +37,9 @@ define letsencrypt::config::domain (
   }
 
   exec { 'name':
-    command => "certbot certonly --webroot -c ${defaults['path']}",
+    command => "certbot certonly -c ${defaults['path']}",
     path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
+    creates => "/etc/letsencrypt/live/${domains[0]}/cert.pem"
   }
 
 }
