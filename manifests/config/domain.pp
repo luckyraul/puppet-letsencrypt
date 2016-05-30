@@ -33,7 +33,7 @@ define letsencrypt::config::domain (
 
 
   file {$webroot:
-    'ensure' => directory,
+    ensure => directory,
   }
 
   exec { 'name':
