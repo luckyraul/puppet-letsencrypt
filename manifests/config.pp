@@ -3,7 +3,7 @@ class letsencrypt::config (
   $domains = $letsencrypt::domains,
 )
 {
-  file {'/etc/letsencrypt/configs':
+  file {['/etc/letsencrypt','/etc/letsencrypt/configs']:
     ensure => directory,
   }
 
