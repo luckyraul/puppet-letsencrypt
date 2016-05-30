@@ -16,7 +16,7 @@ class letsencrypt::install {
           release  => "${::lsbdistcodename}-backports",
         }
 
-        Exec['apt_update'] -> Package['letsencrypt']
+        Exec['apt_update'] -> Package['certbot']
 
         package { 'certbot':
           ensure => installed,
