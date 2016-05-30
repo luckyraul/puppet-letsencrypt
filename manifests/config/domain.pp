@@ -32,6 +32,10 @@ define letsencrypt::config::domain (
   create_ini_settings($settings, $defaults)
 
 
+  file {$webroot:
+    'ensure' => directory,
+  }
+
   exec { 'name':
     command => "certbot -c ${defaults['path']}",
     path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
