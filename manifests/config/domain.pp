@@ -1,7 +1,7 @@
 # Define letsencrypt::config::domain
 define letsencrypt::config::domain (
       $ensure = present,
-      $domains = [],
+      $domain = '',
       $webroot = '',
       $rsa_key_size = 4096,
       $email = $letsencrypt::email,
@@ -21,7 +21,7 @@ define letsencrypt::config::domain (
     {
       'server'        => $server,
       'rsa-key-size'  => $rsa_key_size,
-      'domains'       => $domains,
+      'domains'       => $domain,
       'authenticator' => $authenticator,
       'email'         => $email,
       'text'          => $text,
@@ -39,7 +39,7 @@ define letsencrypt::config::domain (
   exec { 'name':
     command => "certbot certonly -c ${defaults['path']}",
     path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
-    creates => "/etc/letsencrypt/live/${domains[0]}/cert.pem"
+    creates => "/etc/letsencrypt/live/${domain}/cert.pem"
   }
 
 }
