@@ -11,7 +11,7 @@ class letsencrypt::install {
 
         apt::pin { 'backports_letsencrypt':
           ensure   => 'present',
-          packages => ['letsencrypt','python-letsencrypt','python-acme','python-cryptography'],
+          packages => ['letsencrypt','python-letsencrypt','python-acme','python-cryptography','python-openssl','python-pyasn1'],
           priority => 500,
           release  => "${::lsbdistcodename}-backports",
         }
