@@ -18,7 +18,7 @@ class letsencrypt::install {
 
         Exec['apt_update'] -> Package['letsencrypt']
 
-        package { 'letsencrypt':
+        package { 'certbot':
           ensure => installed,
         }
       }
