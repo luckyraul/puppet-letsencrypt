@@ -37,7 +37,7 @@ define letsencrypt::config::domain (
   }
 
   exec { 'name':
-    command => "certbot -c ${defaults['path']}",
+    command => "certbot certonly --webroot -c ${defaults['path']}",
     path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
   }
 
