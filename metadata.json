@@ -18,10 +18,6 @@
   ],
   "requirements": [
     {
-      "name": "pe",
-      "version_requirement": "3.7"
-    },
-    {
       "name": "puppet",
       "version_requirement": "3.4"
     }
@@ -29,6 +25,6 @@
   "dependencies": [
     {"name":"puppetlabs/stdlib","version_requirement":">= 4.1.0"},
     {"name":"puppetlabs/apt","version_requirement":">= 1.8.0 <= 3.0.0"},
-    {"name": "puppetlabs/inifile","version_requirement":">= 1.4.3"},
+    {"name": "puppetlabs/inifile","version_requirement":">= 1.4.3"}
   ]
 }
